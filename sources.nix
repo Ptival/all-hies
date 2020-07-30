@@ -7,6 +7,10 @@ let
   haskellNix = import haskellNixSrc {};
 
   glibcSpecificPkgs = {
+    "glibc-2.31" = import (fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/tarball/a45f68ccac476dc37ddf294530538f2f2cce5a92";
+      sha256 = "0i19mrky9m73i601hczyfk25qqyr3j75idb72imdz55szc4vavzc";
+    }) haskellNix.nixpkgsArgs;
     "glibc-2.30" = import haskellNix.sources.nixpkgs-2003 haskellNix.nixpkgsArgs;
     "glibc-2.27" = import haskellNix.sources.nixpkgs-1909 haskellNix.nixpkgsArgs;
   };
